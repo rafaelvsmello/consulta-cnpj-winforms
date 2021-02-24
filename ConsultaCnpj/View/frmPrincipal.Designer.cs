@@ -1,7 +1,7 @@
 ﻿
 namespace ConsultaCnpj
 {
-    partial class Form
+    partial class frmPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -132,8 +132,9 @@ namespace ConsultaCnpj
             this.button1.TabIndex = 6;
             this.button1.Text = "Ver Empresas";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form
+            // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,7 +149,7 @@ namespace ConsultaCnpj
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.Name = "Form";
+            this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta CNPJ";
             this.groupBox1.ResumeLayout(false);

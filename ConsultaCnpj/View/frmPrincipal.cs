@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ConsultaCnpj
 {
-    public partial class Form : System.Windows.Forms.Form
+    public partial class frmPrincipal : System.Windows.Forms.Form
     {
         Empresa.Root Dados = new Empresa.Root();
 
@@ -110,7 +110,7 @@ namespace ConsultaCnpj
             lstDados.Items.Clear();
         }
 
-        public Form()
+        public frmPrincipal()
         {
             InitializeComponent();
         }
@@ -144,5 +144,10 @@ namespace ConsultaCnpj
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmEmpresas formEmpresas = new frmEmpresas();
+            formEmpresas.ShowDialog();
+        }
     }
 }
