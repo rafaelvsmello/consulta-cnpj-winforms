@@ -35,6 +35,7 @@ namespace ConsultaCnpj
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.lstDados = new System.Windows.Forms.ListBox();
             this.btnLimpar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@ namespace ConsultaCnpj
             // 
             // btnConsultar
             // 
-            this.btnConsultar.BackColor = System.Drawing.Color.DimGray;
+            this.btnConsultar.BackColor = System.Drawing.Color.Gray;
             this.btnConsultar.FlatAppearance.BorderSize = 0;
             this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,12 +118,28 @@ namespace ConsultaCnpj
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DimGray;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(14, 469);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 34);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Ver Empresas";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(500, 516);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.lstDados);
             this.Controls.Add(this.btnCadastrar);
@@ -148,6 +165,7 @@ namespace ConsultaCnpj
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.ListBox lstDados;
         private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.Button button1;
     }
 }
 
