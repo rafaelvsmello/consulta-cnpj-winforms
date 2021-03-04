@@ -30,7 +30,7 @@ namespace ConsultaCnpj
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dgvDados.DataSource = dt;                    
-
+                    
                     foreach (DataGridViewColumn item in dgvDados.Columns)
                     {
                         cmbFiltro.Items.Add(item.HeaderText);
@@ -51,8 +51,19 @@ namespace ConsultaCnpj
         }
 
         private void frmEmpresas_Load(object sender, EventArgs e)
-        {
-            CarregarDados();
+        {            
+            servidor = Properties.Settings.Default.strServidor;
+            banco = Properties.Settings.Default.strBancoDados;
+
+            if (string.IsNullOrEmpty(servidor) || string.IsNullOrEmpty(banco))
+            {
+                MessageBox.Show("Banco de dados não configurado.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Close();
+            }
+            else
+            {
+                CarregarDados();
+            }            
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)

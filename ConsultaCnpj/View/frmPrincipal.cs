@@ -27,7 +27,7 @@ namespace ConsultaCnpj
                     var objResponse = streamReader.ReadToEnd();
 
                     var responseDeserialized = JsonConvert.DeserializeObject<Empresa.Root>(objResponse.ToString());
-                                        
+
                     Dados.cnpj = cnpjTratado;
                     Dados.nome = responseDeserialized.nome;
                     Dados.fantasia = responseDeserialized.fantasia;
@@ -55,8 +55,8 @@ namespace ConsultaCnpj
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);                
-            }            
+                MessageBox.Show(ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void GravarDados()
@@ -135,21 +135,18 @@ namespace ConsultaCnpj
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(servidor) || string.IsNullOrEmpty(banco))
+            if (string.IsNullOrEmpty(servidor) || string.IsNullOrEmpty(banco))
             {
                 MessageBox.Show("Banco de dados não configurado.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else if (lstDados.Items.Count == 0)
+            {
+                MessageBox.Show("Informe um CNPJ para pesquisar e depois cadastrar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             else
             {
-                if (lstDados.Items.Count > 0)
-                {
-                    GravarDados();
-                }
-                else
-                {
-                    MessageBox.Show("Informe um CNPJ para pesquisar e depois cadastrar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                }
-            }            
+                GravarDados();
+            }
         }
 
         private void btnVerEmpresas_Click(object sender, EventArgs e)
@@ -172,8 +169,8 @@ namespace ConsultaCnpj
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             servidor = Properties.Settings.Default.strServidor;
-            banco = Properties.Settings.Default.strBancoDados;
+            banco = Properties.Settings.Default.strBancoDados;            
         }
-        
+
     }
 }
