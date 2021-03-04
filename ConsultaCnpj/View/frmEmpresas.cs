@@ -7,11 +7,13 @@ namespace ConsultaCnpj
 {
     public partial class frmEmpresas : Form
     {
+        string servidor, banco;
+
         private void CarregarDados()
         {
             try
             {
-                using (SqlConnection conexao = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=cadastro;Trusted_Connection=True;"))
+                using (SqlConnection conexao = new SqlConnection($"Server={servidor};Database={banco};Trusted_Connection=True;"))
                 {
                     string query = "SELECT cnpj AS CNPJ," +
                         "nomeEmpresarial AS \"Nome Empresarial\"," +

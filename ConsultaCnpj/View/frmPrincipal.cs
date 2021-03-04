@@ -10,6 +10,7 @@ namespace ConsultaCnpj
     public partial class frmPrincipal : System.Windows.Forms.Form
     {
         Empresa.Root Dados = new Empresa.Root();
+        string servidor, banco;
 
         private void CarregarDados(string cnpj, string cnpjTratado)
         {
@@ -62,7 +63,7 @@ namespace ConsultaCnpj
         {
             try
             {
-                using (SqlConnection conexao = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=cadastro;Trusted_Connection=True;"))
+                using (SqlConnection conexao = new SqlConnection($"Server={servidor};Database={banco};Trusted_Connection=True;"))
                 {
                     string query = "INSERT INTO EMPRESA (cnpj, nomeEmpresarial, nomeFantasia, endereco, complemento, bairro, cidade, cep, dataAbertura) VALUES (" +
                         "@cnpj, " +
@@ -134,20 +135,45 @@ namespace ConsultaCnpj
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (lstDados.Items.Count > 0)
+            if(string.IsNullOrEmpty(servidor) || string.IsNullOrEmpty(banco))
             {
-                GravarDados();
+                MessageBox.Show("Banco de dados não configurado.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                MessageBox.Show("Informe um CNPJ para pesquisar e depois cadastrar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+                if (lstDados.Items.Count > 0)
+                {
+                    GravarDados();
+                }
+                else
+                {
+                    MessageBox.Show("Informe um CNPJ para pesquisar e depois cadastrar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnVerEmpresas_Click(object sender, EventArgs e)
         {
             frmEmpresas formEmpresas = new frmEmpresas();
             formEmpresas.ShowDialog();
         }
+
+        private void configuraçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBancoDados formBancoDados = new frmBancoDados();
+            formBancoDados.ShowDialog();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            servidor = Properties.Settings.Default.strServidor;
+            banco = Properties.Settings.Default.strBancoDados;
+        }
+        
     }
 }
