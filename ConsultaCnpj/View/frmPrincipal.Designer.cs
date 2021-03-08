@@ -40,15 +40,17 @@ namespace ConsultaCnpj
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnConsultar);
             this.groupBox1.Controls.Add(this.txtCnpj);
-            this.groupBox1.Location = new System.Drawing.Point(14, 26);
+            this.groupBox1.Location = new System.Drawing.Point(14, 122);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -89,7 +91,7 @@ namespace ConsultaCnpj
             this.btnCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastrar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrar.ForeColor = System.Drawing.Color.White;
-            this.btnCadastrar.Location = new System.Drawing.Point(246, 474);
+            this.btnCadastrar.Location = new System.Drawing.Point(246, 532);
             this.btnCadastrar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(226, 34);
@@ -102,9 +104,9 @@ namespace ConsultaCnpj
             // 
             this.lstDados.FormattingEnabled = true;
             this.lstDados.ItemHeight = 17;
-            this.lstDados.Location = new System.Drawing.Point(14, 140);
+            this.lstDados.Location = new System.Drawing.Point(14, 240);
             this.lstDados.Name = "lstDados";
-            this.lstDados.Size = new System.Drawing.Size(458, 327);
+            this.lstDados.Size = new System.Drawing.Size(458, 276);
             this.lstDados.TabIndex = 4;
             // 
             // btnLimpar
@@ -114,7 +116,7 @@ namespace ConsultaCnpj
             this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.Color.White;
-            this.btnLimpar.Location = new System.Drawing.Point(130, 474);
+            this.btnLimpar.Location = new System.Drawing.Point(130, 532);
             this.btnLimpar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(110, 34);
@@ -130,7 +132,7 @@ namespace ConsultaCnpj
             this.btnVerEmpresas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerEmpresas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerEmpresas.ForeColor = System.Drawing.Color.White;
-            this.btnVerEmpresas.Location = new System.Drawing.Point(14, 474);
+            this.btnVerEmpresas.Location = new System.Drawing.Point(14, 532);
             this.btnVerEmpresas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnVerEmpresas.Name = "btnVerEmpresas";
             this.btnVerEmpresas.Size = new System.Drawing.Size(110, 34);
@@ -163,23 +165,34 @@ namespace ConsultaCnpj
             // configuraçõesToolStripMenuItem
             // 
             this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
-            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.configuraçõesToolStripMenuItem.Text = "Configurações";
             this.configuraçõesToolStripMenuItem.Click += new System.EventHandler(this.configuraçõesToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ConsultaCnpj.Properties.Resources.receita_federal_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(175, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(141, 89);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(490, 522);
+            this.ClientSize = new System.Drawing.Size(490, 579);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnVerEmpresas);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.lstDados);
@@ -199,6 +212,7 @@ namespace ConsultaCnpj
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,6 +231,7 @@ namespace ConsultaCnpj
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
