@@ -33,7 +33,7 @@ namespace ConsultaCnpj
                     da.Fill(dt);
                     dgvDados.DataSource = dt;
                     dgvDados.Columns["ID"].Visible = false;
-                    dgvDados.Columns["Nome Empresarial"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    // dgvDados.Columns["Nome Empresarial"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     
                     foreach (DataGridViewColumn item in dgvDados.Columns)
                     {

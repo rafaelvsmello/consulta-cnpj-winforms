@@ -52,7 +52,7 @@ namespace ConsultaCnpj
             this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.ForeColor = System.Drawing.Color.White;
-            this.btnConsultar.Location = new System.Drawing.Point(132, 198);
+            this.btnConsultar.Location = new System.Drawing.Point(150, 198);
             this.btnConsultar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(226, 32);
@@ -63,7 +63,7 @@ namespace ConsultaCnpj
             // 
             // txtCnpj
             // 
-            this.txtCnpj.Location = new System.Drawing.Point(132, 165);
+            this.txtCnpj.Location = new System.Drawing.Point(150, 165);
             this.txtCnpj.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCnpj.MaxLength = 20;
             this.txtCnpj.Name = "txtCnpj";
@@ -80,7 +80,7 @@ namespace ConsultaCnpj
             this.btnCadastrar.Location = new System.Drawing.Point(246, 532);
             this.btnCadastrar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(226, 34);
+            this.btnCadastrar.Size = new System.Drawing.Size(268, 34);
             this.btnCadastrar.TabIndex = 2;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = false;
@@ -92,7 +92,7 @@ namespace ConsultaCnpj
             this.lstDados.ItemHeight = 17;
             this.lstDados.Location = new System.Drawing.Point(14, 240);
             this.lstDados.Name = "lstDados";
-            this.lstDados.Size = new System.Drawing.Size(458, 276);
+            this.lstDados.Size = new System.Drawing.Size(500, 276);
             this.lstDados.TabIndex = 4;
             // 
             // btnLimpar
@@ -135,7 +135,7 @@ namespace ConsultaCnpj
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(490, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(526, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -165,7 +165,7 @@ namespace ConsultaCnpj
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ConsultaCnpj.Properties.Resources.receita_federal_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(138, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(156, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(220, 95);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -177,7 +177,7 @@ namespace ConsultaCnpj
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(174, 131);
+            this.label1.Location = new System.Drawing.Point(192, 131);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 30);
             this.label1.TabIndex = 9;
@@ -188,7 +188,7 @@ namespace ConsultaCnpj
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(490, 579);
+            this.ClientSize = new System.Drawing.Size(526, 579);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.txtCnpj);
