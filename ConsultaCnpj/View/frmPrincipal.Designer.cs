@@ -29,7 +29,6 @@ namespace ConsultaCnpj
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.txtCnpj = new System.Windows.Forms.TextBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
@@ -41,23 +40,10 @@ namespace ConsultaCnpj
             this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.groupBox1.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnConsultar);
-            this.groupBox1.Controls.Add(this.txtCnpj);
-            this.groupBox1.Location = new System.Drawing.Point(14, 122);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(458, 105);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "CNPJ";
             // 
             // btnConsultar
             // 
@@ -66,10 +52,10 @@ namespace ConsultaCnpj
             this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.ForeColor = System.Drawing.Color.White;
-            this.btnConsultar.Location = new System.Drawing.Point(291, 48);
+            this.btnConsultar.Location = new System.Drawing.Point(132, 198);
             this.btnConsultar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(119, 25);
+            this.btnConsultar.Size = new System.Drawing.Size(226, 32);
             this.btnConsultar.TabIndex = 1;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = false;
@@ -77,11 +63,11 @@ namespace ConsultaCnpj
             // 
             // txtCnpj
             // 
-            this.txtCnpj.Location = new System.Drawing.Point(20, 48);
+            this.txtCnpj.Location = new System.Drawing.Point(132, 165);
             this.txtCnpj.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCnpj.MaxLength = 20;
             this.txtCnpj.Name = "txtCnpj";
-            this.txtCnpj.Size = new System.Drawing.Size(265, 25);
+            this.txtCnpj.Size = new System.Drawing.Size(226, 25);
             this.txtCnpj.TabIndex = 0;
             // 
             // btnCadastrar
@@ -127,7 +113,7 @@ namespace ConsultaCnpj
             // 
             // btnVerEmpresas
             // 
-            this.btnVerEmpresas.BackColor = System.Drawing.Color.DimGray;
+            this.btnVerEmpresas.BackColor = System.Drawing.Color.Gray;
             this.btnVerEmpresas.FlatAppearance.BorderSize = 0;
             this.btnVerEmpresas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVerEmpresas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -179,12 +165,23 @@ namespace ConsultaCnpj
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ConsultaCnpj.Properties.Resources.receita_federal_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(175, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(138, 27);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(141, 89);
+            this.pictureBox1.Size = new System.Drawing.Size(220, 95);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(174, 131);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 30);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Digite o CNPJ";
             // 
             // frmPrincipal
             // 
@@ -192,12 +189,14 @@ namespace ConsultaCnpj
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(490, 579);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnConsultar);
+            this.Controls.Add(this.txtCnpj);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnVerEmpresas);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.lstDados);
             this.Controls.Add(this.btnCadastrar);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -208,8 +207,6 @@ namespace ConsultaCnpj
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta CNPJ";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -219,8 +216,6 @@ namespace ConsultaCnpj
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtCnpj;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Button btnCadastrar;
@@ -232,6 +227,7 @@ namespace ConsultaCnpj
         private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

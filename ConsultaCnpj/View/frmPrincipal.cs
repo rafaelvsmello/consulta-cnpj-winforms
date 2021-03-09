@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Net;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace ConsultaCnpj
 {
@@ -29,31 +30,40 @@ namespace ConsultaCnpj
 
                     var responseDeserialized = JsonConvert.DeserializeObject<Empresa.Root>(objResponse.ToString()); // Desserialização do objeto
 
-                    Dados.cnpj = cnpjTratado;
-                    Dados.situacao = responseDeserialized.situacao;
-                    Dados.data_situacao = responseDeserialized.data_situacao;
-                    Dados.nome = responseDeserialized.nome;
-                    Dados.fantasia = responseDeserialized.fantasia;
-                    Dados.logradouro = responseDeserialized.logradouro;
-                    Dados.numero = responseDeserialized.numero;
-                    Dados.complemento = responseDeserialized.complemento;
-                    Dados.bairro = responseDeserialized.bairro;
-                    Dados.municipio = responseDeserialized.municipio;
-                    Dados.cep = responseDeserialized.cep;
-                    Dados.abertura = responseDeserialized.abertura;
+                    if (responseDeserialized.status.Contains("ERROR"))
+                    {
+                        MessageBox.Show("Erro: " + responseDeserialized.message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Dados.cnpj = cnpjTratado;
+                        Dados.situacao = responseDeserialized.situacao;
+                        Dados.data_situacao = responseDeserialized.data_situacao;
+                        Dados.nome = responseDeserialized.nome;
+                        Dados.fantasia = responseDeserialized.fantasia;
+                        Dados.logradouro = responseDeserialized.logradouro;
+                        Dados.numero = responseDeserialized.numero;
+                        Dados.complemento = responseDeserialized.complemento;
+                        Dados.bairro = responseDeserialized.bairro;
+                        Dados.municipio = responseDeserialized.municipio;
+                        Dados.cep = responseDeserialized.cep;
+                        Dados.abertura = responseDeserialized.abertura;
+                        Dados.ultima_atualizacao = responseDeserialized.ultima_atualizacao;
 
-                    // Adiciona os dados no ListBox
-                    lstDados.Items.Add("CNPJ: " + cnpj);
-                    lstDados.Items.Add("Situação: " + Dados.situacao);
-                    lstDados.Items.Add("Data situação: " + Dados.data_situacao);
-                    lstDados.Items.Add("Nome Empresarial: " + Dados.nome);
-                    lstDados.Items.Add(string.IsNullOrEmpty(Dados.fantasia) ? "SEM NOME FANTASIA" : "Nome Fantasia: " + Dados.fantasia);
-                    lstDados.Items.Add("Endereço: " + Dados.logradouro + " Nº: " + Dados.numero);
-                    lstDados.Items.Add(string.IsNullOrEmpty(Dados.complemento) ? "SEM COMPLEMENTO" : "Complemento: " + Dados.complemento);
-                    lstDados.Items.Add("Bairro: " + Dados.bairro);
-                    lstDados.Items.Add("Cidade: " + Dados.municipio);
-                    lstDados.Items.Add("CEP: " + Dados.cep);
-                    lstDados.Items.Add("Abertura: " + Dados.abertura);
+                        // Adiciona os dados no ListBox
+                        lstDados.Items.Add("CNPJ: " + cnpj);
+                        lstDados.Items.Add("Situação: " + Dados.situacao);
+                        lstDados.Items.Add("Data situação: " + Dados.data_situacao);
+                        lstDados.Items.Add("Nome Empresarial: " + Dados.nome);
+                        lstDados.Items.Add(string.IsNullOrEmpty(Dados.fantasia) ? "SEM NOME FANTASIA" : "Nome Fantasia: " + Dados.fantasia);
+                        lstDados.Items.Add("Endereço: " + Dados.logradouro + " Nº: " + Dados.numero);
+                        lstDados.Items.Add(string.IsNullOrEmpty(Dados.complemento) ? "SEM COMPLEMENTO" : "Complemento: " + Dados.complemento);
+                        lstDados.Items.Add("Bairro: " + Dados.bairro);
+                        lstDados.Items.Add("Cidade: " + Dados.municipio);
+                        lstDados.Items.Add("CEP: " + Dados.cep);
+                        lstDados.Items.Add("Abertura: " + Dados.abertura);
+                        lstDados.Items.Add("Última atualização: " + Dados.ultima_atualizacao);
+                    }
 
                     streamDados.Close();
                     streamReader.Close();
@@ -72,31 +82,33 @@ namespace ConsultaCnpj
             {
                 using (SqlConnection conexao = new SqlConnection($"Server={servidor};Database={banco};Trusted_Connection=True;"))
                 {
-                    string query = "INSERT INTO empresa (cnpj, situacao, dataSituacao, nomeEmpresarial, nomeFantasia, endereco, complemento, bairro, cidade, cep, dataAbertura) VALUES (" +
+                    string query = "INSERT INTO empresa (cnpj, situacao, dataSituacao, nomeEmpresarial, nomeFantasia, endereco, numEndereco, complemento, bairro, cidade, cep, dataAbertura) VALUES (" +
                         "@cnpj, " +
                         "@situacao, " +
                         "@dataSituacao, " +
                         "@nomeEmpresarial, " +
                         "@nomeFantasia, " +
                         "@endereco, " +
+                        "@numEndereco, " +
                         "@complemento, " +
                         "@bairro, " +
                         "@cidade, " +
                         "@cep, " +
-                        "@dataAbertura);";
+                        "@dataAbertura);";                    
 
                     SqlCommand cmd = new SqlCommand(query, conexao);
                     cmd.Parameters.AddWithValue("@cnpj", Dados.cnpj);
                     cmd.Parameters.AddWithValue("@situacao", Dados.situacao);
-                    cmd.Parameters.AddWithValue("@dataSituacao", Dados.data_situacao);
+                    cmd.Parameters.AddWithValue("@dataSituacao", DateTime.Parse(Dados.data_situacao).ToString("MM/dd/yyyy"));
                     cmd.Parameters.AddWithValue("@nomeEmpresarial", Dados.nome);
                     cmd.Parameters.AddWithValue("@nomeFantasia", Dados.fantasia);
                     cmd.Parameters.AddWithValue("@endereco", Dados.logradouro);
+                    cmd.Parameters.AddWithValue("@numEndereco", Dados.numero);
                     cmd.Parameters.AddWithValue("@complemento", Dados.complemento);
                     cmd.Parameters.AddWithValue("@bairro", Dados.bairro);
                     cmd.Parameters.AddWithValue("@cidade", Dados.municipio);
                     cmd.Parameters.AddWithValue("@cep", Dados.cep);
-                    cmd.Parameters.AddWithValue("@dataAbertura", Dados.abertura);
+                    cmd.Parameters.AddWithValue("@dataAbertura", DateTime.Parse(Dados.abertura).ToString("MM/dd/yyyy"));
 
                     conexao.Open();
 
@@ -132,9 +144,10 @@ namespace ConsultaCnpj
             if (string.IsNullOrEmpty(txtCnpj.Text))
             {
                 MessageBox.Show("Informe um CNPJ para pesquisar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            }            
             else
             {
+                lstDados.Items.Clear();
                 CarregarDados(txtCnpj.Text, txtCnpj.Text.Replace(".", "").Replace("/", "").Replace("-", ""));
             }
         }
@@ -175,7 +188,7 @@ namespace ConsultaCnpj
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
+        }        
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {

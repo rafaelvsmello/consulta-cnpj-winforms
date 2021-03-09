@@ -56,15 +56,15 @@ namespace ConsultaCnpj
             // txtBancoDados
             // 
             this.txtBancoDados.BackColor = System.Drawing.Color.White;
-            this.txtBancoDados.Location = new System.Drawing.Point(13, 90);
+            this.txtBancoDados.Location = new System.Drawing.Point(12, 71);
             this.txtBancoDados.Name = "txtBancoDados";
-            this.txtBancoDados.Size = new System.Drawing.Size(286, 22);
+            this.txtBancoDados.Size = new System.Drawing.Size(287, 22);
             this.txtBancoDados.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 74);
+            this.label2.Location = new System.Drawing.Point(9, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 13);
             this.label2.TabIndex = 2;
@@ -77,7 +77,7 @@ namespace ConsultaCnpj
             this.btnGravar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGravar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGravar.ForeColor = System.Drawing.Color.White;
-            this.btnGravar.Location = new System.Drawing.Point(190, 121);
+            this.btnGravar.Location = new System.Drawing.Point(190, 103);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(109, 27);
             this.btnGravar.TabIndex = 4;
@@ -90,7 +90,7 @@ namespace ConsultaCnpj
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(311, 161);
+            this.ClientSize = new System.Drawing.Size(311, 143);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.txtBancoDados);
             this.Controls.Add(this.label2);
