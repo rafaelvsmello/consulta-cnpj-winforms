@@ -24,7 +24,7 @@ namespace ConsultaCnpj
                         "cidade AS Cidade," +
                         "cep AS CEP," +
                         "dataAbertura AS \"Data Abertura\" " +
-                        "FROM EMPRESA;";
+                        "FROM empresa;";
                     SqlCommand cmd = new SqlCommand(query, conexao);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();

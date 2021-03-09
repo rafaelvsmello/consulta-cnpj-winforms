@@ -12,6 +12,7 @@ namespace ConsultaCnpj
         Empresa.Root Dados = new Empresa.Root();
         string servidor, banco;
 
+        // Método para carregar os dados da API
         private void CarregarDados(string cnpj, string cnpjTratado)
         {
             try
@@ -26,9 +27,11 @@ namespace ConsultaCnpj
                     var streamReader = new StreamReader(streamDados);
                     var objResponse = streamReader.ReadToEnd();
 
-                    var responseDeserialized = JsonConvert.DeserializeObject<Empresa.Root>(objResponse.ToString());
+                    var responseDeserialized = JsonConvert.DeserializeObject<Empresa.Root>(objResponse.ToString()); // Desserialização do objeto
 
                     Dados.cnpj = cnpjTratado;
+                    Dados.situacao = responseDeserialized.situacao;
+                    Dados.data_situacao = responseDeserialized.data_situacao;
                     Dados.nome = responseDeserialized.nome;
                     Dados.fantasia = responseDeserialized.fantasia;
                     Dados.logradouro = responseDeserialized.logradouro;
@@ -39,7 +42,10 @@ namespace ConsultaCnpj
                     Dados.cep = responseDeserialized.cep;
                     Dados.abertura = responseDeserialized.abertura;
 
+                    // Adiciona os dados no ListBox
                     lstDados.Items.Add("CNPJ: " + cnpj);
+                    lstDados.Items.Add("Situação: " + Dados.situacao);
+                    lstDados.Items.Add("Data situação: " + Dados.data_situacao);
                     lstDados.Items.Add("Nome Empresarial: " + Dados.nome);
                     lstDados.Items.Add(string.IsNullOrEmpty(Dados.fantasia) ? "SEM NOME FANTASIA" : "Nome Fantasia: " + Dados.fantasia);
                     lstDados.Items.Add("Endereço: " + Dados.logradouro + " Nº: " + Dados.numero);
@@ -59,14 +65,17 @@ namespace ConsultaCnpj
             }
         }
 
+        // Método para gravar os dados no SQL Server
         private void GravarDados()
         {
             try
             {
                 using (SqlConnection conexao = new SqlConnection($"Server={servidor};Database={banco};Trusted_Connection=True;"))
                 {
-                    string query = "INSERT INTO EMPRESA (cnpj, nomeEmpresarial, nomeFantasia, endereco, complemento, bairro, cidade, cep, dataAbertura) VALUES (" +
+                    string query = "INSERT INTO empresa (cnpj, situacao, dataSituacao, nomeEmpresarial, nomeFantasia, endereco, complemento, bairro, cidade, cep, dataAbertura) VALUES (" +
                         "@cnpj, " +
+                        "@situacao, " +
+                        "@dataSituacao, " +
                         "@nomeEmpresarial, " +
                         "@nomeFantasia, " +
                         "@endereco, " +
@@ -78,6 +87,8 @@ namespace ConsultaCnpj
 
                     SqlCommand cmd = new SqlCommand(query, conexao);
                     cmd.Parameters.AddWithValue("@cnpj", Dados.cnpj);
+                    cmd.Parameters.AddWithValue("@situacao", Dados.situacao);
+                    cmd.Parameters.AddWithValue("@dataSituacao", Dados.data_situacao);
                     cmd.Parameters.AddWithValue("@nomeEmpresarial", Dados.nome);
                     cmd.Parameters.AddWithValue("@nomeFantasia", Dados.fantasia);
                     cmd.Parameters.AddWithValue("@endereco", Dados.logradouro);
