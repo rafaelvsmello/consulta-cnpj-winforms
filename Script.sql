@@ -8,6 +8,7 @@ CREATE TABLE empresa(
     nomeEmpresarial VARCHAR(100),
     nomeFantasia VARCHAR(100),
     endereco VARCHAR(80),
+    numEndereco VARCHAR(10),
     complemento VARCHAR(80),
     bairro VARCHAR(80),
     cidade VARCHAR(80),
